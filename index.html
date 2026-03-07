@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sons of Greenwich — Doom Metal</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500&family=Crimson+Pro:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #04080a;
+    --deep: #060d0a;
+    --green-dark: #0a1f0f;
+    --green-mid: #1a4a20;
+    --green: #1db33a;
+    --green-bright: #2ecc4a;
+    --topo-dark: #071209;
+    --ash: #7a9e82;
+    --bone: #c8d8cc;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--bone);
+    font-family: 'Crimson Pro', Georgia, serif;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.3;
+  }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    background: var(--black);
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('SOG_YouTube_header.jpg');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.4;
+    filter: saturate(1.2);
+  }
+
+  .hero-bg-fade {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at center, rgba(4,8,10,0.15) 0%, rgba(4,8,10,0.65) 55%, var(--black) 100%),
+      linear-gradient(to bottom, transparent 30%, var(--black) 100%);
+  }
+
+  .hero-banner {
+    width: min(680px, 88vw);
+    position: relative;
+    z-index: 2;
+    border-radius: 4px;
+    animation: fadeIn 1.6s ease 0.2s both;
+    filter: drop-shadow(0 0 40px rgba(0,200,50,0.3));
+  }
+
+  .hero-tagline {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 200;
+    font-size: clamp(0.6rem, 1.6vw, 0.82rem);
+    letter-spacing: 0.55em;
+    text-transform: uppercase;
+    color: var(--ash);
+    margin-top: 2.2rem;
+    position: relative;
+    z-index: 2;
+    animation: fadeUp 1.2s ease 0.8s both;
+    display: flex;
+    align-items: center;
+    gap: 1.2em;
+  }
+
+  .hero-tagline span { color: var(--green); opacity: 0.7; }
+
+  .hero-links {
+    display: flex;
+    gap: 1.8rem;
+    margin-top: 2.2rem;
+    position: relative;
+    z-index: 2;
+    animation: fadeUp 1.2s ease 1.1s both;
+  }
+
+  .hero-links a {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 300;
+    font-size: 0.62rem;
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    color: var(--ash);
+    text-decoration: none;
+    padding-bottom: 3px;
+    border-bottom: 1px solid transparent;
+    transition: color 0.3s, border-color 0.3s;
+  }
+
+  .hero-links a:hover { color: var(--green-bright); border-color: var(--green); }
+
+  .scroll-cue {
+    position: absolute;
+    bottom: 2.2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    animation: fadeUp 1s ease 1.6s both, bobDown 3s ease 2.6s infinite;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .scroll-cue-text {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.52rem;
+    letter-spacing: 0.5em;
+    color: var(--green-mid);
+    text-transform: uppercase;
+  }
+
+  .scroll-line { width: 1px; height: 34px; background: linear-gradient(to bottom, var(--green), transparent); }
+
+  /* ── BIOGRAPHY ── */
+  #biography {
+    border-left: 2px solid var(--green-mid);
+    padding-left: 3rem;
+    max-width: 900px;
+    margin: 0 auto;
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+    padding-right: 2rem;
+  }
+
+  #biography p {
+    font-size: 1.2rem;
+    line-height: 1.95;
+    color: var(--ash);
+    font-weight: 300;
+    margin-bottom: 1.5rem;
+  }
+
+  #biography em {
+    color: var(--green-bright);
+    font-style: normal;
+    font-weight: 400;
+  }
+
+  /* ── LOGO DIVIDER ── */
+  .logo-divider {
+    text-align: center;
+    padding: 2rem 0;
+  }
+
+  .logo-divider img {
+    width: 72px;
+    opacity: 0.55;
+    filter: drop-shadow(0 0 12px rgba(0,200,50,0.3));
+    transition: opacity 0.4s, filter 0.4s;
+  }
+
+  .logo-divider img:hover {
+    opacity: 0.9;
+    filter: drop-shadow(0 0 22px rgba(0,255,68,0.55));
+  }
+
+  /* ── BAND PHOTO ── */
+  #band-photo {
+    padding: 0 2rem 5rem;
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  .band-photo-inner {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .band-photo-inner img {
+    width: 100%;
+    display: block;
+    filter: sepia(0.15) contrast(1.05);
+    transition: filter 0.6s ease;
+  }
+
+  .band-photo-inner:hover img {
+    filter: sepia(0.15) contrast(1.05) brightness(1.05);
+  }
+
+  .band-photo-inner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 1px solid rgba(29,179,58,0.18);
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  /* Green corner accents */
+  .band-photo-inner::after {
+    content: '';
+    position: absolute;
+    top: 10px; left: 10px;
+    width: 30px; height: 30px;
+    border-top: 2px solid var(--green);
+    border-left: 2px solid var(--green);
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .photo-caption {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 200;
+    font-size: 0.58rem;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    color: var(--green);
+    opacity: 0.55;
+    text-align: right;
+    margin-top: 0.8rem;
+    padding-right: 2px;
+  }
+
+  /* ── MEMBERS ── */
+  #members-section {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .members-topo-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('Sons_Of_Greenwich_Topo_Rectangle_.png');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.08;
+  }
+
+  #members-section .section-wrap { position: relative; z-index: 1; }
+
+  .section-wrap {
+    padding: 7rem 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 200;
+    font-size: 0.6rem;
+    letter-spacing: 0.65em;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    opacity: 0.8;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, var(--green-mid), transparent);
+    max-width: 100px;
+  }
+
+  .section-title {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 500;
+    font-size: clamp(1.8rem, 4.5vw, 3.2rem);
+    color: var(--bone);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 2.5rem;
+    line-height: 1;
+  }
+
+  .members-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 2px;
+  }
+
+  .member-card {
+    background: rgba(6,13,10,0.92);
+    border: 1px solid rgba(29,179,58,0.1);
+    padding: 2.5rem 2rem;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.4s, background 0.4s;
+  }
+
+  .member-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(to right, var(--green), var(--green-bright));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+  }
+
+  .member-card:hover { border-color: rgba(29,179,58,0.28); background: rgba(10,31,15,0.97); }
+  .member-card:hover::after { transform: scaleX(1); }
+
+  .member-role {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.56rem;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 0.6rem;
+    opacity: 0.8;
+  }
+
+  .member-name {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.35rem;
+    font-weight: 500;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--bone);
+    margin-bottom: 1rem;
+  }
+
+  .member-bands {
+    font-size: 0.85rem;
+    color: var(--ash);
+    font-style: italic;
+    line-height: 1.75;
+    opacity: 0.75;
+  }
+
+  /* ── EPK ── */
+  .epk-inner {
+    display: grid;
+    grid-template-columns: 1fr 200px;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .ep-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: clamp(1.2rem, 2.5vw, 1.7rem);
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--green-bright);
+    text-shadow: 0 0 25px rgba(0,255,68,0.35);
+    margin-bottom: 1.5rem;
+  }
+
+  .epk-inner p {
+    font-size: 1.15rem;
+    line-height: 1.9;
+    color: var(--ash);
+    font-weight: 300;
+    margin-bottom: 2rem;
+  }
+
+  .links-cluster { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+
+  .cta-link {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 300;
+    font-size: 0.62rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--bone);
+    text-decoration: none;
+    border: 1px solid rgba(29,179,58,0.28);
+    padding: 0.72rem 1.6rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-link::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--green-mid);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    z-index: -1;
+  }
+
+  .cta-link:hover { color: var(--green-bright); border-color: var(--green); }
+  .cta-link:hover::before { transform: translateX(0); }
+
+  .cd-art {
+    width: 100%;
+    border-radius: 50%;
+    filter: drop-shadow(0 0 25px rgba(0,200,50,0.25));
+    animation: spinSlow 45s linear infinite;
+    cursor: pointer;
+    transition: filter 0.4s;
+  }
+
+  .cd-art:hover {
+    filter: drop-shadow(0 0 45px rgba(0,255,68,0.55));
+    animation-play-state: paused;
+  }
+
+  @keyframes spinSlow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid rgba(29,179,58,0.15);
+    padding: 4rem 2rem;
+    text-align: center;
+    background: var(--topo-dark);
+    position: relative;
+    overflow: hidden;
+  }
+
+  footer::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('Sons_Of_Greenwich_Topo_Rectangle_.png');
+    background-size: cover;
+    opacity: 0.05;
+  }
+
+  .footer-g {
+    width: 60px;
+    margin: 0 auto 1.5rem;
+    display: block;
+    opacity: 0.5;
+    position: relative;
+    z-index: 1;
+    filter: drop-shadow(0 0 10px rgba(0,200,50,0.3));
+  }
+
+  .footer-name {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--ash);
+    margin-bottom: 0.5rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .footer-sub {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.58rem;
+    letter-spacing: 0.55em;
+    text-transform: uppercase;
+    color: var(--green);
+    opacity: 0.45;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Reveal */
+  .reveal { opacity: 0; transform: translateY(26px); transition: opacity 0.85s ease, transform 0.85s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.97); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes bobDown {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(8px); }
+  }
+
+  @media (max-width: 680px) {
+    .epk-inner { grid-template-columns: 1fr; }
+    .cd-art { max-width: 180px; margin: 0 auto; display: block; }
+    #biography { padding-left: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-bg-fade"></div>
+  <img class="hero-banner" src="Sons_Of_Greenwich_Bandcamp_Hadal_OUT_NOW_Header.jpg" alt="Sons of Greenwich — Hadal EP Out Now">
+  <p class="hero-tagline">
+    <span>⬡</span> Doom Metal <span>⬡</span> Western Massachusetts <span>⬡</span>
+  </p>
+  <nav class="hero-links">
+    <a href="https://sonsofgreenwich.bandcamp.com/" target="_blank">Bandcamp</a>
+    <a href="https://www.instagram.com/sonsofgreenwich/" target="_blank">Instagram</a>
+    <a href="https://youtube.com/@greenwichdoom" target="_blank">YouTube</a>
+    <a href="mailto:">Email</a>
+  </nav>
+  <div class="scroll-cue">
+    <div class="scroll-cue-text">Descend</div>
+    <div class="scroll-line"></div>
+  </div>
+</div>
+
+<!-- BIOGRAPHY -->
+<div id="biography">
+  <div class="section-label reveal">Biography</div>
+  <h2 class="section-title reveal">The Story</h2>
+  <p class="reveal">
+    Sons of Greenwich deliver crushing, fuzz-drenched doom metal rooted in <em>70s hard rock</em>, psychedelia, and the bleak heft of sludge and stoner metal. Hailing from the sparsely populated mill town of <em>Erving, Massachusetts</em>, the band formed nearly a year ago and quickly evolved from informal jam sessions into a fully realized heavy project.
+  </p>
+  <p class="reveal">
+    The lineup features drummer <em>Jamie Barry</em> (Edgar, The Justice League, Catstronaut84), bassist/vocalist <em>Brett Cosby</em> (Catstronaut84, ex–Thirteen of Everything), and guitarist/vocalist <em>Chris Matthews</em> (ex–Tetsuo, The Search For…, Sour Times). Each member brings distinct influences and songwriting voices, resulting in dense, dynamic compositions built on massive riffs and immersive atmosphere.
+  </p>
+  <p class="reveal">
+    With a debut EP slated for independent release in early 2026, Sons of Greenwich are preparing to bring their uncompromisingly live sound and visual presentation to stages throughout the Northeast shortly thereafter.
+  </p>
+</div>
+
+<div class="logo-divider reveal">
+  <img src="Sons_Of_Greenwich_G_Green_.png" alt="Sons of Greenwich mark">
+</div>
+
+<!-- BAND PHOTO -->
+<div id="band-photo">
+  <div class="band-photo-inner reveal">
+    <img src="band_photo.jpg" alt="Sons of Greenwich">
+    <div class="photo-caption">Sons of Greenwich — Erving, MA</div>
+  </div>
+</div>
+
+<!-- MEMBERS -->
+<div id="members-section">
+  <div class="members-topo-bg"></div>
+  <div class="section-wrap">
+    <div class="section-label reveal">The Band</div>
+    <h2 class="section-title reveal">Members</h2>
+    <div class="members-grid">
+      <div class="member-card reveal">
+        <div class="member-role">Guitar &amp; Vocals</div>
+        <div class="member-name">Chris Matthews</div>
+        <div class="member-bands">ex–Tetsuo · The Search For… · Sour Times</div>
+      </div>
+      <div class="member-card reveal">
+        <div class="member-role">Bass &amp; Vocals</div>
+        <div class="member-name">Brett Cosby</div>
+        <div class="member-bands">Catstronaut84 · ex–Thirteen of Everything</div>
+      </div>
+      <div class="member-card reveal">
+        <div class="member-role">Drums</div>
+        <div class="member-name">Jamie Barry</div>
+        <div class="member-bands">Edgar · The Justice League · Catstronaut84</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="logo-divider reveal">
+  <img src="Sons_Of_Greenwich_G_Green_.png" alt="">
+</div>
+
+<!-- EPK -->
+<div id="epk">
+  <div class="section-wrap">
+    <div class="section-label reveal">Press</div>
+    <h2 class="section-title reveal">Electronic Press Kit</h2>
+    <div class="epk-inner reveal">
+      <div class="epk-text">
+        <div class="ep-title">⬡ Hadal EP — Out Now ⬡</div>
+        <p>
+          Fuzz-drenched doom rooted in 70s hard rock and psychedelia, built on massive riffs and immersive atmosphere. Available for booking throughout the Northeast.
+        </p>
+        <div class="links-cluster">
+          <a class="cta-link" href="https://sonsofgreenwich.bandcamp.com/" target="_blank">Bandcamp</a>
+          <a class="cta-link" href="https://www.instagram.com/sonsofgreenwich/" target="_blank">Instagram</a>
+          <a class="cta-link" href="https://youtube.com/@greenwichdoom" target="_blank">YouTube</a>
+          <a class="cta-link" href="mailto:">Contact / Booking</a>
+        </div>
+      </div>
+      <div>
+        <img class="cd-art" src="SonsOfGreenwich_cd_art.jpg" alt="Hadal EP CD Art">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <img class="footer-g" src="Sons_Of_Greenwich_G_Green_.png" alt="">
+  <div class="footer-name">Sons of Greenwich</div>
+  <div class="footer-sub">Erving, Massachusetts ⬡ Doom Metal</div>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
