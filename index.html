@@ -108,8 +108,7 @@
     position: relative;
     z-index: 2;
     animation: fadeIn 1.6s ease 0.2s both;
-    mix-blend-mode: lighten;
-    filter: drop-shadow(0 0 40px rgba(0,200,50,0.35));
+    filter: drop-shadow(0 0 40px rgba(0,200,50,0.35)) invert(1) sepia(1) saturate(3) hue-rotate(90deg);
   }
 
   .hero-tagline {
@@ -200,7 +199,7 @@
     max-width: 900px;
     margin: 0 auto;
     padding-top: 7rem;
-    padding-bottom: 7rem;
+    padding-bottom: 3rem;
     padding-right: 2rem;
   }
 
@@ -221,7 +220,7 @@
   /* ── LOGO DIVIDER ── */
   .logo-divider {
     text-align: center;
-    padding: 2rem 0;
+    padding: 1rem 0;
   }
 
   .logo-divider img {
@@ -238,7 +237,7 @@
 
   /* ── BAND PHOTO ── */
   #band-photo {
-    padding: 0 2rem 5rem;
+    padding: 0 2rem 2rem;
     max-width: 860px;
     margin: 0 auto;
   }
@@ -311,7 +310,7 @@
   #members-section .section-wrap { position: relative; z-index: 1; }
 
   .section-wrap {
-    padding: 7rem 2rem;
+    padding: 3rem 2rem 7rem;
     max-width: 900px;
     margin: 0 auto;
   }
@@ -407,6 +406,9 @@
   }
 
   /* ── EPK ── */
+  #epk .section-wrap {
+    padding-top: 3rem;
+  }
   .epk-inner {
     display: grid;
     grid-template-columns: 1fr 200px;
@@ -495,15 +497,13 @@
   footer::before {
     content: '';
     position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
+    inset: 0;
     background-image: url('Sons_Of_Greenwich_Topo_Rectangle_.png');
-    background-size: cover;
+    background-size: auto 100%;
     background-position: center;
-    transform: rotate(90deg);
-    opacity: 0.05;
+    background-repeat: repeat-x;
+    transform: rotate(90deg) scaleX(3);
+    opacity: 0.07;
   }
 
   .footer-g {
@@ -577,7 +577,7 @@
     <a href="https://sonsofgreenwich.bandcamp.com/" target="_blank">Bandcamp</a>
     <a href="https://www.instagram.com/sonsofgreenwich/" target="_blank">Instagram</a>
     <a href="https://youtube.com/@greenwichdoom" target="_blank">YouTube</a>
-    <a href="/cdn-cgi/l/email-protection#85">Email</a>
+    <a href="mailto:sonsofgreenwich@gmail.com">Email</a>
   </nav>
   <div class="scroll-cue">
     <div class="scroll-cue-text">Descend</div>
@@ -616,20 +616,20 @@
 <div id="members-section">
   <div class="members-topo-bg"></div>
   <div class="section-wrap">
-    <div class="section-label reveal">The Band</div>
-    <h2 class="section-title reveal">Members</h2>
+    <div class="section-label">The Band</div>
+    <h2 class="section-title">Members</h2>
     <div class="members-grid">
-      <div class="member-card reveal">
+      <div class="member-card">
         <div class="member-role">Guitar &amp; Vocals</div>
         <div class="member-name">Chris Matthews</div>
         <div class="member-bands">ex–Tetsuo · The Search For… · Sour Times</div>
       </div>
-      <div class="member-card reveal">
+      <div class="member-card">
         <div class="member-role">Bass &amp; Vocals</div>
         <div class="member-name">Brett Cosby</div>
         <div class="member-bands">Catstronaut84 · ex–Thirteen of Everything</div>
       </div>
-      <div class="member-card reveal">
+      <div class="member-card">
         <div class="member-role">Drums</div>
         <div class="member-name">Jamie Barry</div>
         <div class="member-bands">Edgar · The Justice League · Catstronaut84</div>
@@ -657,7 +657,7 @@
           <a class="cta-link" href="https://sonsofgreenwich.bandcamp.com/" target="_blank">Bandcamp</a>
           <a class="cta-link" href="https://www.instagram.com/sonsofgreenwich/" target="_blank">Instagram</a>
           <a class="cta-link" href="https://youtube.com/@greenwichdoom" target="_blank">YouTube</a>
-          <a class="cta-link" href="mailto:">Contact / Booking</a>
+          <a class="cta-link" href="mailto:sonsofgreenwich@gmail.com">Contact / Booking</a>
         </div>
       </div>
       <div>
@@ -674,7 +674,5 @@
   <div class="footer-sub">Erving, Massachusetts ⬡ Doom Metal</div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  const reveals = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classLis
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  const reveals = document.querySelectorAll('.reve
