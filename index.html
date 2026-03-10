@@ -39,13 +39,58 @@
     opacity: 0.3;
   }
 
+  /* ── FIXED NAV ── */
+  #site-nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2.5rem;
+    background: rgba(4,8,10,0.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(29,179,58,0.12);
+  }
+
+  #site-nav .nav-name {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 400;
+    font-size: 0.75rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--bone);
+    text-decoration: none;
+  }
+
+  #site-nav .nav-links {
+    display: flex;
+    gap: 1.8rem;
+  }
+
+  #site-nav .nav-links a {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 300;
+    font-size: 0.62rem;
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    color: var(--ash);
+    text-decoration: none;
+    padding-bottom: 3px;
+    border-bottom: 1px solid transparent;
+    transition: color 0.3s, border-color 0.3s;
+  }
+
+  #site-nav .nav-links a:hover { color: var(--green-bright); border-color: var(--green); }
+
   /* ── HERO ── */
   #hero {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
+    padding-bottom: 6rem;
     position: relative;
     overflow: hidden;
     background: var(--black);
@@ -78,31 +123,6 @@
     filter: drop-shadow(0 0 40px rgba(0,200,50,0.3));
   }
 
-  .hero-title {
-    font-family: 'Oswald', sans-serif;
-    font-weight: 500;
-    font-size: clamp(2.5rem, 9vw, 7rem);
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    text-align: center;
-    color: var(--bone);
-    position: relative;
-    z-index: 2;
-    animation: fadeIn 1.6s ease 0.2s both;
-    text-shadow: 0 0 60px rgba(0,200,50,0.25), 0 2px 8px rgba(0,0,0,0.8);
-    line-height: 1;
-  }
-
-  .hero-title span {
-    display: block;
-    font-size: 0.38em;
-    letter-spacing: 0.5em;
-    color: var(--green);
-    font-weight: 200;
-    margin-bottom: 0.4em;
-    text-shadow: none;
-  }
-
   .hero-logo-img {
     width: min(520px, 80vw);
     position: relative;
@@ -118,13 +138,18 @@
     letter-spacing: 0.55em;
     text-transform: uppercase;
     color: var(--ash);
-    margin-top: 2.2rem;
     position: relative;
     z-index: 2;
     animation: fadeUp 1.2s ease 0.8s both;
     display: flex;
     align-items: center;
     gap: 1.2em;
+  }
+
+  .hero-tagline .band-name-inline {
+    color: var(--bone);
+    font-weight: 400;
+    font-size: 1.1em;
   }
 
   .hero-tagline span { color: var(--green); opacity: 0.7; }
@@ -303,7 +328,7 @@
   #members-section .section-wrap { position: relative; z-index: 1; }
 
   .section-wrap {
-    padding: 3rem 2rem 7rem;
+    padding: 1.5rem 2rem 7rem;
     max-width: 900px;
     margin: 0 auto;
   }
@@ -548,20 +573,25 @@
 </head>
 <body>
 
+<!-- FIXED NAV -->
+<nav id="site-nav">
+  <span class="nav-name">Sons of Greenwich</span>
+  <div class="nav-links">
+    <a href="https://sonsofgreenwich.bandcamp.com/" target="_blank">Bandcamp</a>
+    <a href="https://www.instagram.com/sonsofgreenwich/" target="_blank">Instagram</a>
+    <a href="https://youtube.com/@greenwichdoom" target="_blank">YouTube</a>
+    <a href="mailto:sonsofgreenwich@gmail.com">Email</a>
+  </div>
+</nav>
+
 <!-- HERO -->
 <div id="hero">
   <div class="hero-bg"></div>
   <div class="hero-bg-fade"></div>
-  <img class="hero-logo-img" src="SOG_logo_transparent.png" alt="Sons of Greenwich">
+  <h1 style="position:absolute;width:1px;height:1px;overflow:hidden;opacity:0;">Sons of Greenwich</h1>
   <p class="hero-tagline">
     <span>⬡</span> Doom Metal <span>⬡</span> Western Massachusetts <span>⬡</span>
   </p>
-  <nav class="hero-links">
-    <a href="https://sonsofgreenwich.bandcamp.com/" target="_blank">Bandcamp</a>
-    <a href="https://www.instagram.com/sonsofgreenwich/" target="_blank">Instagram</a>
-    <a href="https://youtube.com/@greenwichdoom" target="_blank">YouTube</a>
-    <a href="/cdn-cgi/l/email-protection#3f4c50514c5059584d5a5a5148565c577f58525e5653115c5052">Email</a>
-  </nav>
   <div class="scroll-cue">
     <div class="scroll-cue-text">Descend</div>
     <div class="scroll-line"></div>
@@ -589,7 +619,7 @@
 
 <!-- BAND PHOTO -->
 <div id="band-photo">
-  <div class="band-photo-inner reveal">
+  <div class="band-photo-inner">
     <img src="band_photo.jpg" alt="Sons of Greenwich">
     <div class="photo-caption">Sons of Greenwich — Erving, MA</div>
   </div>
