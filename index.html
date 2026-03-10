@@ -78,6 +78,40 @@
     filter: drop-shadow(0 0 40px rgba(0,200,50,0.3));
   }
 
+  .hero-title {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 500;
+    font-size: clamp(2.5rem, 9vw, 7rem);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-align: center;
+    color: var(--bone);
+    position: relative;
+    z-index: 2;
+    animation: fadeIn 1.6s ease 0.2s both;
+    text-shadow: 0 0 60px rgba(0,200,50,0.25), 0 2px 8px rgba(0,0,0,0.8);
+    line-height: 1;
+  }
+
+  .hero-title span {
+    display: block;
+    font-size: 0.38em;
+    letter-spacing: 0.5em;
+    color: var(--green);
+    font-weight: 200;
+    margin-bottom: 0.4em;
+    text-shadow: none;
+  }
+
+  .hero-logo-img {
+    width: min(520px, 80vw);
+    position: relative;
+    z-index: 2;
+    animation: fadeIn 1.6s ease 0.2s both;
+    mix-blend-mode: lighten;
+    filter: drop-shadow(0 0 40px rgba(0,200,50,0.35));
+  }
+
   .hero-tagline {
     font-family: 'Oswald', sans-serif;
     font-weight: 200;
@@ -142,6 +176,22 @@
   }
 
   .scroll-line { width: 1px; height: 34px; background: linear-gradient(to bottom, var(--green), transparent); }
+
+  /* ── EP BANNER ── */
+  #ep-banner {
+    width: 100%;
+    line-height: 0;
+  }
+
+  #ep-banner a { display: block; }
+
+  #ep-banner img {
+    width: 100%;
+    display: block;
+    transition: filter 0.3s;
+  }
+
+  #ep-banner img:hover { filter: brightness(1.1); }
 
   /* ── BIOGRAPHY ── */
   #biography {
@@ -445,9 +495,14 @@
   footer::before {
     content: '';
     position: absolute;
-    inset: 0;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
     background-image: url('Sons_Of_Greenwich_Topo_Rectangle_.png');
     background-size: cover;
+    background-position: center;
+    transform: rotate(90deg);
     opacity: 0.05;
   }
 
@@ -514,7 +569,7 @@
 <div id="hero">
   <div class="hero-bg"></div>
   <div class="hero-bg-fade"></div>
-  <img class="hero-banner" src="Sons_Of_Greenwich_Bandcamp_Hadal_OUT_NOW_Header.jpg" alt="Sons of Greenwich — Hadal EP Out Now">
+  <img class="hero-logo-img" src="SOG_TYPEFACELOGO_TEAL_WHTBG.png" alt="Sons of Greenwich">
   <p class="hero-tagline">
     <span>⬡</span> Doom Metal <span>⬡</span> Western Massachusetts <span>⬡</span>
   </p>
@@ -522,7 +577,7 @@
     <a href="https://sonsofgreenwich.bandcamp.com/" target="_blank">Bandcamp</a>
     <a href="https://www.instagram.com/sonsofgreenwich/" target="_blank">Instagram</a>
     <a href="https://youtube.com/@greenwichdoom" target="_blank">YouTube</a>
-    <a href="mailto:">Email</a>
+    <a href="/cdn-cgi/l/email-protection#85">Email</a>
   </nav>
   <div class="scroll-cue">
     <div class="scroll-cue-text">Descend</div>
@@ -530,17 +585,24 @@
   </div>
 </div>
 
+<!-- HADAL EP BANNER -->
+<div id="ep-banner">
+  <a href="https://sonsofgreenwich.bandcamp.com/" target="_blank">
+    <img src="Sons_Of_Greenwich_Bandcamp_Hadal_OUT_NOW_Header.jpg" alt="Sons of Greenwich — Hadal EP Out Now">
+  </a>
+</div>
+
 <!-- BIOGRAPHY -->
 <div id="biography">
-  <div class="section-label reveal">Biography</div>
-  <h2 class="section-title reveal">The Story</h2>
-  <p class="reveal">
+  <div class="section-label">Biography</div>
+  <h2 class="section-title">The Story</h2>
+  <p>
     Sons of Greenwich deliver crushing, fuzz-drenched doom metal rooted in <em>70s hard rock</em>, psychedelia, and the bleak heft of sludge and stoner metal. Hailing from the sparsely populated mill town of <em>Erving, Massachusetts</em>, the band formed nearly a year ago and quickly evolved from informal jam sessions into a fully realized heavy project.
   </p>
-  <p class="reveal">
+  <p>
     The lineup features drummer <em>Jamie Barry</em> (Edgar, The Justice League, Catstronaut84), bassist/vocalist <em>Brett Cosby</em> (Catstronaut84, ex–Thirteen of Everything), and guitarist/vocalist <em>Chris Matthews</em> (ex–Tetsuo, The Search For…, Sour Times). Each member brings distinct influences and songwriting voices, resulting in dense, dynamic compositions built on massive riffs and immersive atmosphere.
   </p>
-  <p class="reveal">
+  <p>
     With a debut EP slated for independent release in early 2026, Sons of Greenwich are preparing to bring their uncompromisingly live sound and visual presentation to stages throughout the Northeast shortly thereafter.
   </p>
 </div>
@@ -602,7 +664,7 @@
           <a class="cta-link" href="https://sonsofgreenwich.bandcamp.com/" target="_blank">Bandcamp</a>
           <a class="cta-link" href="https://www.instagram.com/sonsofgreenwich/" target="_blank">Instagram</a>
           <a class="cta-link" href="https://youtube.com/@greenwichdoom" target="_blank">YouTube</a>
-          <a class="cta-link" href="mailto:">Contact / Booking</a>
+          <a class="cta-link" href="/cdn-cgi/l/email-protection#0c">Contact / Booking</a>
         </div>
       </div>
       <div>
@@ -619,13 +681,7 @@
   <div class="footer-sub">Erving, Massachusetts ⬡ Doom Metal</div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   const reveals = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
-  }, { threshold: 0.1 });
-  reveals.forEach(el => observer.observe(el));
-</script>
-
-</body>
-</html>
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classLis
