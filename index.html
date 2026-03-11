@@ -188,6 +188,10 @@
     .hamburger { display: flex; }
     .mobile-menu { display: flex; }
     #site-nav { padding: 1rem 1.5rem; }
+    .hero-bg {
+      background-position: center top;
+      background-size: auto 100%;
+    }
   }
 
   /* ── HERO ── */
@@ -538,7 +542,12 @@
     display: grid;
     grid-template-columns: 1fr 200px;
     gap: 4rem;
-    align-items: center;
+    align-items: start;
+  }
+
+  .epk-inner > div:last-child {
+    position: sticky;
+    top: 5rem;
   }
 
   .ep-title {
@@ -668,6 +677,8 @@
 
   @media (max-width: 680px) {
     .form-row { grid-template-columns: 1fr; }
+    .epk-inner { grid-template-columns: 1fr; }
+    .epk-inner > div:last-child { display: none; }
   }
 
   /* ── FOOTER ── */
@@ -748,7 +759,7 @@
     <a href="https://sonsofgreenwich.bandcamp.com/" target="_blank">Bandcamp</a>
     <a href="https://www.instagram.com/sonsofgreenwich/" target="_blank">Instagram</a>
     <a href="https://youtube.com/@greenwichdoom" target="_blank">YouTube</a>
-    <a href="mailto:sonsofgreenwich@gmail.com">Email</a>
+    <a href="/cdn-cgi/l/email-protection#ef9c80819c8089889d8a8a8198868c87af88828e8683c18c8082">Email</a>
   </div>
   <div class="hamburger" id="hamburger" onclick="toggleMenu()">
     <span></span><span></span><span></span>
@@ -760,7 +771,7 @@
   <a href="https://sonsofgreenwich.bandcamp.com/" target="_blank" onclick="toggleMenu()">Bandcamp</a>
   <a href="https://www.instagram.com/sonsofgreenwich/" target="_blank" onclick="toggleMenu()">Instagram</a>
   <a href="https://youtube.com/@greenwichdoom" target="_blank" onclick="toggleMenu()">YouTube</a>
-  <a href="mailto:sonsofgreenwich@gmail.com" onclick="toggleMenu()">Email</a>
+  <a href="/cdn-cgi/l/email-protection#c3b0acadb0aca5a4b1a6a6adb4aaa0ab83a4aea2aaafeda0acae" onclick="toggleMenu()">Email</a>
 </div>
 
 <!-- HERO -->
@@ -856,7 +867,8 @@
           <form action="https://formsubmit.co/sonsofgreenwich@gmail.com" method="POST">
             <input type="hidden" name="_subject" value="Sons of Greenwich — Website Inquiry">
             <input type="hidden" name="_captcha" value="false">
-            <input type="hidden" name="_next" value="">
+            <input type="hidden" name="_next" value="https://sonsofgreenwich.com">
+            <input type="text" name="_honey" style="display:none">
             <div class="form-row">
               <input class="form-input" type="text" name="name" placeholder="Your Name" required>
               <input class="form-input" type="email" name="email" placeholder="Your Email" required>
@@ -882,11 +894,7 @@
   <div class="footer-sub">Erving, Massachusetts ⬡ Doom Metal</div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   function toggleMenu() {
     document.getElementById('hamburger').classList.toggle('open');
-    document.getElementById('mobile-menu').classList.toggle('open');
-  }
-</script>
-
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="f
+    documen
