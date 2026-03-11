@@ -81,7 +81,114 @@
     transition: color 0.3s, border-color 0.3s;
   }
 
+  /* ── FIXED NAV ── */
+  #site-nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2.5rem;
+    background: rgba(4,8,10,0.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(29,179,58,0.12);
+  }
+
+  #site-nav .nav-name {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 400;
+    font-size: 0.75rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--bone);
+    text-decoration: none;
+  }
+
+  #site-nav .nav-links {
+    display: flex;
+    gap: 1.8rem;
+  }
+
+  #site-nav .nav-links a {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 300;
+    font-size: 0.62rem;
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    color: var(--ash);
+    text-decoration: none;
+    padding-bottom: 3px;
+    border-bottom: 1px solid transparent;
+    transition: color 0.3s, border-color 0.3s;
+  }
+
   #site-nav .nav-links a:hover { color: var(--green-bright); border-color: var(--green); }
+
+  /* Hamburger */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+    z-index: 1001;
+  }
+
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--ash);
+    transition: all 0.3s ease;
+    transform-origin: center;
+  }
+
+  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); background: var(--green); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); background: var(--green); }
+
+  /* Mobile menu dropdown */
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    background: rgba(4,8,10,0.97);
+    backdrop-filter: blur(12px);
+    z-index: 999;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2.5rem;
+    padding: 6rem 2rem 3rem;
+    border-bottom: 1px solid rgba(29,179,58,0.15);
+    transform: translateY(-100%);
+    transition: transform 0.4s ease;
+  }
+
+  .mobile-menu.open {
+    transform: translateY(0);
+  }
+
+  .mobile-menu a {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 300;
+    font-size: 1.1rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--ash);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .mobile-menu a:hover { color: var(--green-bright); }
+
+  @media (max-width: 680px) {
+    #site-nav .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .mobile-menu { display: flex; }
+    #site-nav { padding: 1rem 1.5rem; }
+  }
 
   /* ── HERO ── */
   #hero {
@@ -502,6 +609,67 @@
     to { transform: rotate(360deg); }
   }
 
+  /* ── CONTACT FORM ── */
+  .contact-form { margin-top: 0.5rem; }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.6rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .form-input {
+    width: 100%;
+    background: rgba(10,31,15,0.7);
+    border: 1px solid rgba(29,179,58,0.2);
+    color: var(--bone);
+    font-family: 'Oswald', sans-serif;
+    font-weight: 300;
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    padding: 0.75rem 1rem;
+    outline: none;
+    transition: border-color 0.3s;
+    box-sizing: border-box;
+  }
+
+  .form-input::placeholder { color: var(--ash); opacity: 0.6; }
+  .form-input:focus { border-color: var(--green); }
+
+  .form-textarea {
+    display: block;
+    resize: vertical;
+    min-height: 110px;
+    margin-bottom: 0.6rem;
+  }
+
+  .form-submit {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 300;
+    font-size: 0.62rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--bone);
+    background: transparent;
+    border: 1px solid rgba(29,179,58,0.28);
+    padding: 0.75rem 2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .form-submit:hover {
+    color: var(--green-bright);
+    border-color: var(--green);
+    background: var(--green-mid);
+  }
+
+  @media (max-width: 680px) {
+    .form-row { grid-template-columns: 1fr; }
+  }
+
   /* ── FOOTER ── */
   footer {
     border-top: 1px solid rgba(29,179,58,0.15);
@@ -582,7 +750,18 @@
     <a href="https://youtube.com/@greenwichdoom" target="_blank">YouTube</a>
     <a href="mailto:sonsofgreenwich@gmail.com">Email</a>
   </div>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
 </nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu">
+  <a href="https://sonsofgreenwich.bandcamp.com/" target="_blank" onclick="toggleMenu()">Bandcamp</a>
+  <a href="https://www.instagram.com/sonsofgreenwich/" target="_blank" onclick="toggleMenu()">Instagram</a>
+  <a href="https://youtube.com/@greenwichdoom" target="_blank" onclick="toggleMenu()">YouTube</a>
+  <a href="mailto:sonsofgreenwich@gmail.com" onclick="toggleMenu()">Email</a>
+</div>
 
 <!-- HERO -->
 <div id="hero">
@@ -606,7 +785,7 @@
     Sons of Greenwich deliver crushing, fuzz-drenched doom metal rooted in <em>70s hard rock</em>, psychedelia, and the bleak heft of sludge and stoner metal. Hailing from the sparsely populated mill town of <em>Erving, Massachusetts</em>, the band formed nearly a year ago and quickly evolved from informal jam sessions into a fully realized heavy project.
   </p>
   <p>
-    The lineup features drummer <em>Jamie Barry</em> (Edgar, The Justice League, Catstronaut84), bassist/vocalist <em>Brett Cosby</em> (Catstronaut84, ex–Thirteen of Everything), and guitarist/vocalist <em>Chris Matthews</em> (ex–Tetsuo, The Search For…, Sour Times). Each member brings distinct influences and songwriting voices, resulting in dense, dynamic compositions built on massive riffs and immersive atmosphere.
+    The lineup features guitarist/vocalist <em>Chris Matthews</em> (ex–Tetsuo, The Search For…, Sour Times), bassist/vocalist <em>Brett Cosby</em> (Catstronaut84, ex–Thirteen of Everything), and drummer <em>Jamie Barry</em> (Edgar, The Justice League). Each member brings distinct influences and songwriting voices, resulting in dense, dynamic compositions built on massive riffs and immersive atmosphere.
   </p>
   <p>
     With a debut EP slated for independent release in early 2026, Sons of Greenwich are preparing to bring their uncompromisingly live sound and visual presentation to stages throughout the Northeast shortly thereafter.
@@ -664,13 +843,27 @@
       <div class="epk-text">
         <div class="ep-title">⬡ Hadal EP — Coming Soon ⬡</div>
         <p>
-          Fuzz-drenched doom rooted in 70s hard rock and psychedelia, built on massive riffs and immersive atmosphere. Available for booking throughout the Northeast.
+          Fuzz-drenched doom rooted in 70s hard rock and psychedelia, built on massive riffs and immersive atmosphere. Available for booking throughout the Northeast and beyond.
         </p>
         <div class="links-cluster">
           <a class="cta-link" href="https://sonsofgreenwich.bandcamp.com/" target="_blank">Bandcamp</a>
           <a class="cta-link" href="https://www.instagram.com/sonsofgreenwich/" target="_blank">Instagram</a>
           <a class="cta-link" href="https://youtube.com/@greenwichdoom" target="_blank">YouTube</a>
-          <a class="cta-link" href="/cdn-cgi/l/email-protection#a4d7cbcad7cbc2c3d6c1c1cad3cdc7cce4c3c9c5cdc88ac7cbc9">Contact / Booking</a>
+        </div>
+
+        <div class="contact-form">
+          <div class="section-label" style="margin-top:2rem;">Contact / Booking</div>
+          <form action="https://formsubmit.co/sonsofgreenwich@gmail.com" method="POST">
+            <input type="hidden" name="_subject" value="Sons of Greenwich — Website Inquiry">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_next" value="">
+            <div class="form-row">
+              <input class="form-input" type="text" name="name" placeholder="Your Name" required>
+              <input class="form-input" type="email" name="email" placeholder="Your Email" required>
+            </div>
+            <textarea class="form-input form-textarea" name="message" placeholder="Message" required></textarea>
+            <button class="form-submit" type="submit">Send Message</button>
+          </form>
         </div>
       </div>
       <div>
@@ -689,4 +882,11 @@
   <div class="footer-sub">Erving, Massachusetts ⬡ Doom Metal</div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-
+<script>
+  function toggleMenu() {
+    document.getElementById('hamburger').classList.toggle('open');
+    document.getElementById('mobile-menu').classList.toggle('open');
+  }
+</script>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="f
