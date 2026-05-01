@@ -947,10 +947,11 @@
 <nav id="site-nav">
   <span class="nav-name">Sons of Greenwich</span>
   <div class="nav-links">
+    <a href="#shows">Shows</a>
     <a href="https://sonsofgreenwich.bandcamp.com/" target="_blank">Bandcamp</a>
     <a href="https://www.instagram.com/sonsofgreenwich/" target="_blank">Instagram</a>
     <a href="https://youtube.com/@greenwichdoom" target="_blank">YouTube</a>
-    <a href="/cdn-cgi/l/email-protection#ef9c80819c8089889d8a8a8198868c87af88828e8683c18c8082">Email</a>
+    <a href="mailto:sonsofgreenwich@gmail.com">Email</a>
   </div>
   <div class="hamburger" id="hamburger" onclick="toggleMenu()">
     <span></span><span></span><span></span>
@@ -959,10 +960,11 @@
 
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobile-menu">
+  <a href="#shows" onclick="toggleMenu()">Shows</a>
   <a href="https://sonsofgreenwich.bandcamp.com/" target="_blank" onclick="toggleMenu()">Bandcamp</a>
   <a href="https://www.instagram.com/sonsofgreenwich/" target="_blank" onclick="toggleMenu()">Instagram</a>
   <a href="https://youtube.com/@greenwichdoom" target="_blank" onclick="toggleMenu()">YouTube</a>
-  <a href="/cdn-cgi/l/email-protection#c3b0acadb0aca5a4b1a6a6adb4aaa0ab83a4aea2aaafeda0acae" onclick="toggleMenu()">Email</a>
+  <a href="mailto:sonsofgreenwich@gmail.com" onclick="toggleMenu()">Email</a>
 </div>
 
 <!-- HERO -->
@@ -994,6 +996,15 @@
   </div>
 </div>
 
+<!-- SHOWS -->
+<div id="shows">
+  <div class="section-wrap">
+    <div class="section-label">Live</div>
+    <h2 class="section-title">Upcoming Shows</h2>
+    <div id="shows-list"></div>
+  </div>
+</div>
+
 <!-- BIOGRAPHY -->
 <div id="biography">
   <div class="section-label">Biography</div>
@@ -1005,7 +1016,7 @@
     The lineup features guitarist/vocalist <em>Chris Matthews</em> (ex–Tetsuo, The Search For…, Sour Times), bassist/vocalist <em>Brett Cosby</em> (Catstronaut84, ex–Thirteen of Everything), and drummer <em>Jamie Barry</em> (Edgar, The Justice League). Each member brings distinct influences and songwriting voices, resulting in dense, dynamic compositions built on massive riffs and immersive atmosphere.
   </p>
   <p>
-    With a debut EP slated for independent release in early 2026, Sons of Greenwich are preparing to bring their uncompromisingly live sound and visual presentation to stages throughout the Northeast shortly thereafter.
+    With their debut EP <em>Hadal</em> out now on Bandcamp, Sons of Greenwich are bringing their uncompromisingly live sound and visual presentation to stages throughout the Northeast and beyond.
   </p>
 </div>
 
@@ -1058,7 +1069,7 @@
     <h2 class="section-title">Electronic Press Kit</h2>
     <div class="epk-inner">
       <div class="epk-text">
-        <div class="ep-title">⬡ Hadal EP — Coming Soon ⬡</div>
+        <div class="ep-title">⬡ Hadal EP — <a href="https://sonsofgreenwich.bandcamp.com/" target="_blank" style="color:inherit;text-decoration:none;border-bottom:1px solid var(--green);">Out Now</a> ⬡</div>
         <p>
           Fuzz-drenched doom rooted in 70s hard rock and psychedelia, built on massive riffs and immersive atmosphere. Available for booking throughout the Northeast and beyond.
         </p>
@@ -1097,28 +1108,38 @@
   <img src="Sons_Of_Greenwich_G_Green_.png" alt="">
 </div>
 
-<!-- SHOWS (hidden) -->
-<div id="shows" style="display:none">
-  <div class="section-wrap">
-    <div class="section-label">Live</div>
-    <h2 class="section-title">Upcoming Shows</h2>
-    <div class="show-item">
-      <div class="show-date">Mar 28<span>2026</span></div>
-      <div class="show-info">
-        <div class="show-venue">The Heavy Culture Cooperative</div>
-        <div class="show-location">1 Northampton St, Easthampton, MA</div>
-      </div>
-      <a class="show-link" href="https://www.theheavyculture.coop/shows" target="_blank">Tickets</a>
-    </div>
-  </div>
-</div>
-
 <!-- FOOTER -->
 <footer>
   <img class="footer-g" src="Sons_Of_Greenwich_G_Green_.png" alt="">
   <div class="footer-name">Sons of Greenwich</div>
   <div class="footer-sub">Erving, Massachusetts ⬡ Doom Metal</div>
 </footer>
+
+<script>
+  // Load shows from shows.json
+  fetch('shows.json')
+    .then(r => r.json())
+    .then(shows => {
+      const list = document.getElementById('shows-list');
+      if (!shows || !shows.length) {
+        list.innerHTML = '<p class="no-shows">No shows currently scheduled — check back soon or follow us on Instagram for announcements.</p>';
+        return;
+      }
+      list.innerHTML = shows.map(s => `
+        <div class="show-item">
+          <div class="show-date">${s.date}<span>${s.year}</span></div>
+          <div class="show-info">
+            <div class="show-venue">${s.venue}</div>
+            <div class="show-location">${s.location}</div>
+          </div>
+          <a class="show-link" href="${s.tickets}" target="_blank">Tickets</a>
+        </div>
+      `).join('');
+    })
+    .catch(() => {
+      document.getElementById('shows-list').innerHTML = '<p class="no-shows">Check back soon for upcoming shows.</p>';
+    });
+</script>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   function toggleMenu() {
