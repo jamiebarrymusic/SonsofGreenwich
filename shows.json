@@ -16,5 +16,14 @@
     "doors": "7:00 PM",
     "price": "$10-$20 (21+, sliding scale)",
     "tickets": "https://theheavyculture.coop"
+  },
+  {
+    "date": "Aug 30",
+    "year": "2026",
+    "venue": "New England Doom Fest Vol. 4 @ Charleez Hill",
+    "location": "734 Center Rd, Lebanon, ME 04027",
+    "doors": "4:45 PM",
+    "price": "Free",
+    "tickets": "https://www.instagram.com/newenglanddoomfest"
   }
 ]
