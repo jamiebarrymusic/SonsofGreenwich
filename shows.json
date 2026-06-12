@@ -7,5 +7,14 @@
     "doors": "1:00 PM",
     "price": "$20",
     "tickets": "https://www.facebook.com/deciduouslabel/"
+  },
+  {
+    "date": "Aug 7",
+    "year": "2026",
+    "venue": "GUHTS, Toothless, Sons of Greenwich @ THCC",
+    "location": "1 Northampton St, Easthampton, MA",
+    "doors": "7:00 PM",
+    "price": "$10-$20 (21+, sliding scale)",
+    "tickets": "https://theheavyculture.coop"
   }
 ]
