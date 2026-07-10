@@ -1,12 +1,12 @@
 [
-  {
-    "date": "Jun 20",
-    "year": "2026",
-    "venue": "Ritual 2026",
-    "location": "6 Mill St, Ashland, NH",
-    "doors": "1:00 PM",
-    "price": "$20",
-    "tickets": "https://www.facebook.com/deciduouslabel/"
+    {
+    "date": "POSTPONED, New date TBA",
+    "year": "2026?",
+    "venue": "New England Doom Fest Vol. 4 @ Charleez Hill",
+    "location": "734 Center Rd, Lebanon, ME 04027",
+    "doors": "4:45 PM",
+    "price": "Free",
+    "tickets": "https://www.instagram.com/newenglanddoomfest"
   },
   {
     "date": "Aug 7",
@@ -18,12 +18,12 @@
     "tickets": "https://theheavyculture.coop"
   },
   {
-    "date": "Aug 30",
+    "date": "Aug 13",
     "year": "2026",
-    "venue": "New England Doom Fest Vol. 4 @ Charleez Hill",
-    "location": "734 Center Rd, Lebanon, ME 04027",
-    "doors": "4:45 PM",
-    "price": "Free",
-    "tickets": "https://www.instagram.com/newenglanddoomfest"
+    "venue": "Girthworm, Rattlord, Post Hyper Sleeper, Sons of Greenwich @ Ralphs Rock Diner",
+    "location": "148 Grove St, Worcester, MA 01605",
+    "doors": "5:00 PM",
+    "price": "$20",
+    "tickets": "https://www.ralphsrockdiner.com/"
   }
 ]
