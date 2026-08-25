@@ -1,29 +1,20 @@
 [
     {
-    "date": "POSTPONED, New date TBA",
-    "year": "2026?",
-    "venue": "New England Doom Fest Vol. 4 @ Charleez Hill",
-    "location": "734 Center Rd, Lebanon, ME 04027",
-    "doors": "4:45 PM",
-    "price": "Free",
-    "tickets": "https://www.instagram.com/newenglanddoomfest"
+    "date": "December 27th",
+    "year": "2026",
+    "venue": "@ ZUZU With Hobo Wizzard and Girthworm",
+    "location": "474 Massachusetts Ave. Cambridge, MA",
+    "doors": "Doors and Show at 9",
+    "price": "No Cover",
+    "tickets": "https://mideastclub.com/zuzu/"
   },
   {
-    "date": "Aug 7",
-    "year": "2026",
-    "venue": "GUHTS, Toothless, Sons of Greenwich @ THCC",
-    "location": "1 Northampton St, Easthampton, MA",
-    "doors": "7:00 PM",
-    "price": "$10-$20 (21+, sliding scale)",
-    "tickets": "https://theheavyculture.coop"
-  },
-  {
-    "date": "Aug 13",
-    "year": "2026",
-    "venue": "Girthworm, Rattlord, Post Hyper Sleeper, Sons of Greenwich @ Ralphs Rock Diner",
-    "location": "148 Grove St, Worcester, MA 01605",
-    "doors": "5:00 PM",
-    "price": "$20",
-    "tickets": "https://www.ralphsrockdiner.com/"
+    "date": "April 17th",
+    "year": "2027",
+    "venue": "The Cellar on Treadwell",
+    "location": "295 Treadwell St. Hamden, CT",
+    "doors": "7:30 PM",
+    "price": "$25",
+    "tickets": "https://www.cellarct.com/"
   }
 ]
